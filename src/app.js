@@ -1,19 +1,14 @@
-import express from "express";
-import { routerProductos } from "./routes/routeProductos.js";
-import { routerCarrito } from "./routes/routeCarrito.js";
-import { auth } from "./middlewares/auth.js";
+/*
+Entrega 10 - Clase 20
+Alumno: Jo Repossi
+Backend: NodeJS
+Comisión 30995
+Profesor: Diego Jofre
+Fecha: Martes 28 Jujio 2022
+**/
 
-const PORT = process.env.PORT || 8080;
-const app = express();
+import Server from "./server/index.js";
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+const server = new Server();
 
-/* ---------------------------------- rutas --------------------------------- */
-app.use("/api", routerProductos); //falta agregar el auth
-app.use("/api", routerCarrito); //falta agregar el auth
-
-const server = app.listen(PORT, () => {
-  console.log(`server funcionando en port http://localhost:${PORT}`);
-});
-server.on("error", (err) => console.error(err));
+server.listen();
